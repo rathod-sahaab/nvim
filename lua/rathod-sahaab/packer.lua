@@ -99,4 +99,5 @@ return require('packer').startup(function(use)
 	}
 	use "p00f/nvim-ts-rainbow"
 	use "simrat39/symbols-outline.nvim"
+	use "JoosepAlviste/nvim-ts-context-commentstring"
 end)
