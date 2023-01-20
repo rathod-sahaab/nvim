@@ -89,15 +89,14 @@ return require('packer').startup(function(use)
 	use "jose-elias-alvarez/null-ls.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
 	use "folke/which-key.nvim"
-	use {
-		"f-person/git-blame.nvim",
-		event = "BufRead",
-		config = function()
-			vim.cmd "highlight default link gitblame SpecialComment"
-			vim.g.gitblame_enabled = 0
-		end,
-	}
 	use "p00f/nvim-ts-rainbow"
 	use "simrat39/symbols-outline.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+	use {
+		"folke/todo-comments.nvim",
+		event = "BufRead",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	}
 end)

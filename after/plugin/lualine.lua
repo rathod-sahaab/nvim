@@ -36,11 +36,8 @@ require('lualine').setup {
 		lualine_z = {}
 	},
 	winbar = {
-		-- lualine_a = { { navic.get_location, cond = navic.is_available } },
+		lualine_a = { { navic.get_location, cond = navic.is_available } },
 	},
 	inactive_winbar = {},
 	extensions = {}
 }
-
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
