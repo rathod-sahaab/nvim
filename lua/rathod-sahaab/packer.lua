@@ -99,4 +99,6 @@ return require('packer').startup(function(use)
 			require("todo-comments").setup()
 		end,
 	}
+	use 'nmac427/guess-indent.nvim'
+	use { "catppuccin/nvim", as = "catppuccin" }
 end)
