@@ -81,10 +81,7 @@ return require('packer').startup(function(use)
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig"
 	}
-	use {
-		'lewis6991/gitsigns.nvim',
-		tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
-	}
+	use 'lewis6991/gitsigns.nvim'
 	use "ahmedkhalf/project.nvim"
 	use "jose-elias-alvarez/null-ls.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
@@ -102,4 +99,5 @@ return require('packer').startup(function(use)
 	use 'nmac427/guess-indent.nvim'
 	use { "catppuccin/nvim", as = "catppuccin" }
 	use 'lewis6991/impatient.nvim'
+	use { "zbirenbaum/copilot.lua" }
 end)
