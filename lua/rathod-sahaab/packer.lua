@@ -101,4 +101,5 @@ return require('packer').startup(function(use)
 	}
 	use 'nmac427/guess-indent.nvim'
 	use { "catppuccin/nvim", as = "catppuccin" }
+	use 'lewis6991/impatient.nvim'
 end)
