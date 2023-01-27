@@ -10,14 +10,6 @@ return require('packer').startup(function(use)
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
-	use {
-		'rose-pine/neovim',
-		as = 'rose-pine',
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
-	}
-
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
@@ -47,11 +39,7 @@ return require('packer').startup(function(use)
 	use {
 		"folke/zen-mode.nvim",
 		config = function()
-			require("zen-mode").setup {
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			}
+			require("zen-mode").setup {}
 		end
 	}
 
@@ -83,10 +71,7 @@ return require('packer').startup(function(use)
 	}
 	use 'lewis6991/gitsigns.nvim'
 	use "ahmedkhalf/project.nvim"
-	use "jose-elias-alvarez/null-ls.nvim"
-	use "lukas-reineke/indent-blankline.nvim"
 	use "folke/which-key.nvim"
-	use "p00f/nvim-ts-rainbow"
 	use "simrat39/symbols-outline.nvim"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
 	use {
@@ -96,8 +81,26 @@ return require('packer').startup(function(use)
 			require("todo-comments").setup()
 		end,
 	}
-	use 'nmac427/guess-indent.nvim'
-	use { "catppuccin/nvim", as = "catppuccin" }
 	use 'lewis6991/impatient.nvim'
+	-- formatting
+	use "jose-elias-alvarez/null-ls.nvim"
+	use 'nmac427/guess-indent.nvim'
+	-- completion
 	use { "zbirenbaum/copilot.lua" }
+	use {
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end
+	}
+	-- colors
+	use { "catppuccin/nvim", as = "catppuccin" }
+	use { "ellisonleao/gruvbox.nvim" }
+	use { 'rose-pine/neovim', as = 'rose-pine' }
+	-- appearance
+	use "lukas-reineke/indent-blankline.nvim"
+	use "p00f/nvim-ts-rainbow"
+
+
 end)
