@@ -62,10 +62,6 @@ return require('packer').startup(function(use)
 	}
 	use("kylechui/nvim-surround")
 	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
-	use {
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig"
 	}
@@ -101,6 +97,10 @@ return require('packer').startup(function(use)
 	-- appearance
 	use "lukas-reineke/indent-blankline.nvim"
 	use "p00f/nvim-ts-rainbow"
-
-
+	-- view (menu, status-line, winbar, etc.)
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+	use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 end)
