@@ -118,4 +118,8 @@ return require('packer').startup(function(use)
 			})
 		end,
 	}
+	use {
+		'goolord/alpha-nvim',
+		requires = { 'nvim-tree/nvim-web-devicons' },
+	}
 end)
