@@ -1,8 +1,8 @@
-require('nvim-navic').setup({
-	highlight = true
-})
-
-vim.g.navic_silence = true
+-- require('nvim-navic').setup({
+-- 	highlight = true
+-- })
+--
+-- vim.g.navic_silence = true
 
 
 vim.api.nvim_set_hl(0, "NavicIconsNamespace", { link = "Namespace" })

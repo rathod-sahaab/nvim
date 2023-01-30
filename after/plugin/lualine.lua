@@ -1,4 +1,4 @@
-local navic = require("nvim-navic")
+-- local navic = require("nvim-navic")
 
 require('lualine').setup {
 	options = {
@@ -7,16 +7,15 @@ require('lualine').setup {
 		component_separators = { left = '', right = '' },
 		section_separators = { left = '', right = '' },
 		disabled_filetypes = {
-			statusline = {},
-			winbar = {},
+			'NvimTree'
 		},
 		ignore_focus = {},
 		always_divide_middle = true,
 		globalstatus = false,
 		refresh = {
 			statusline = 1000,
-			tabline = 1000,
-			winbar = 1000,
+			-- tabline = 1000,
+			-- winbar = 1000,
 		}
 	},
 	sections = {
@@ -34,9 +33,6 @@ require('lualine').setup {
 		lualine_x = { 'location' },
 		lualine_y = {},
 		lualine_z = {}
-	},
-	winbar = {
-		lualine_a = { { navic.get_location, cond = navic.is_available } },
 	},
 	inactive_winbar = {},
 	extensions = {}

@@ -40,8 +40,8 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 	vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
 	-- goto diagnostic
-	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
+	vim.keymap.set("n", "<leader>ldp", function() vim.diagnostic.goto_prev() end, opts)
+	vim.keymap.set("n", "<leader>ldn", function() vim.diagnostic.goto_next() end, opts)
 	-- code actions
 	vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end, opts)
 	-- lsp diagnostic expand
