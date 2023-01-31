@@ -43,7 +43,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>ldp", function() vim.diagnostic.goto_prev() end, opts)
 	vim.keymap.set("n", "<leader>ldn", function() vim.diagnostic.goto_next() end, opts)
 	-- code actions
-	vim.keymap.set("n", "<leader>lca", function() vim.lsp.buf.code_action() end, opts)
+	vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
 	-- lsp diagnostic expand
 	vim.keymap.set("n", "<leader>lde", function() vim.diagnostic.open_float() end, opts)
 	vim.keymap.set("n", "<leader>lgi", function() vim.lsp.buf.implementation() end, opts)

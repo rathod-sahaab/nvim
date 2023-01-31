@@ -21,10 +21,10 @@ dashboard.section.terminal.height = height
 dashboard.section.terminal.opts.redraw = true
 
 dashboard.section.buttons.val = {
-	dashboard.button("f", "  Find a file", ":Telescope find_files <CR>"),
-	dashboard.button("p", "  Find a project", ":Telescope project <CR>"),
-	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-	dashboard.button("c", "  Configuration", ":e $MYVIMRC<CR>"),
+	dashboard.button("f", "  Find a file", "<cmd>Telescope find_files<CR>"),
+	dashboard.button("p", "  Find a project", "<cmd>Telescope projects<CR>"),
+	dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles<CR>"),
+	dashboard.button("c", "  Configuration", "<cmd>e $MYVIMRC<CR>"),
 }
 local function footer()
 	-- Number of plugins
