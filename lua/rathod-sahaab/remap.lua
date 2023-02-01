@@ -44,4 +44,4 @@ vim.keymap.set("n", "gl", "<C-w>l")
 vim.keymap.set("n", "gj", "<C-w>j")
 vim.keymap.set("n", "gk", "<C-w>k")
 
-vim.keymap.set("n", "gb", "<cmd>:BufferLinePick<CR>")
+vim.keymap.set("n", "<leader>gb", "<cmd>:BufferLinePick<CR>")
