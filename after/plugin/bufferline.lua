@@ -17,6 +17,13 @@ require("bufferline").setup {
 			return s
 		end,
 		numbers = 'ordinal',
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "Explorer",
+				highlight = "Directory",
+				separator = '' -- use a "true" to enable the default, or set your own character
+			}
+		}
 	},
 }
-

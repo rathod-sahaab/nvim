@@ -45,3 +45,7 @@ vim.keymap.set("n", "gj", "<C-w>j")
 vim.keymap.set("n", "gk", "<C-w>k")
 
 vim.keymap.set("n", "<leader>gb", "<cmd>:BufferLinePick<CR>")
+vim.keymap.set("n", "<leader>gb", "<cmd>:BufferLinePick<CR>")
+
+-- keybinding to toggle fish terminal
+vim.keymap.set("n", "<C-`>", ":bo split term://fish<CR>i")
