@@ -20,8 +20,7 @@ require("bufferline").setup {
 		offsets = {
 			{
 				filetype = "NvimTree",
-				text = "Explorer",
-				highlight = "Directory",
+				highlight = "NvimTreeNormal",
 				separator = '' -- use a "true" to enable the default, or set your own character
 			}
 		}
