@@ -57,6 +57,14 @@ wk.register({
 
 wk.register({
 	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+	g = {
+		name = "Goto",
+		b = { "<cmd>:BufferLinePick<CR>", "Pick buffer" },
+		h = { "<C-w>h", "Goto split on left" },
+		l = { "<C-w>l", "Goto split on right" },
+		j = { "<C-w>j", "Goto split on bottom" },
+		k = { "<C-w>k", "Goto split on top" },
+	},
 }, { mode = "t" })
 
 wk.register({

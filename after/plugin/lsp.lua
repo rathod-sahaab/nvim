@@ -51,10 +51,16 @@ lsp.on_attach(function(client, bufnr)
 			name = "diagnostics",
 			l = { function() vim.diagnostic.show_line_diagnostics({ border = "single" }) end, "Show line diagnostics" },
 			o = { function() vim.diagnostic.open_float({ border = "single" }) end, "Open floating window" },
-			p = {function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis'},
-			n = {function() vim.diagnostic.goto_next() end, 'Goto next diagnosis'},
-		} ,
-		f = { function() vim.lsp.buf.formatting() end, "Format code" },
+			p = { function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis' },
+			n = { function() vim.diagnostic.goto_next() end, 'Goto next diagnosis' },
+		},
+		f = { function() vim.lsp.buf.format({
+				filter = function()
+					return client.name ~= "tsserver"
+				end,
+				bufnr = bufnr,
+			})
+		end, "Format code" },
 		i = { function() vim.lsp.buf.incoming_calls() end, "Show incoming calls" },
 		o = { function() vim.lsp.buf.outgoing_calls() end, "Show outgoing calls" },
 		r = { function() vim.lsp.buf.rename() end, "Rename symbol under cursor" },
