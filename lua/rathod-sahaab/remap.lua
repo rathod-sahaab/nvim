@@ -17,9 +17,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- delete to null clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
 vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 --

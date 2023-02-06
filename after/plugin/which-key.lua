@@ -26,10 +26,6 @@ wk.register({
 }, { mode = "v" })
 
 wk.register({
-	["<leader>"] = {
-		d = { "\"_d", "Delete to null clipboard" },
-		y = { "\"+y", "Copy to system clipboard" },
-	},
 	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
 }, { mode = "i" })
 
