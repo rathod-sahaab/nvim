@@ -1,33 +1,67 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<C-s>", ":w<CR>")
-vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
+local wk = require("which-key")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+wk.register({
+	["<leader>"] = {
+		d = { "\"_d", "Delete to null clipboard" },
+		y = { "\"+y", "Copy to clipboard" },
+		Y = { "\"+Y", "Copy line to clipboard" },
+		e = { "<cmd>NvimTreeFocus<CR>", "Focus file explorer" },
+		k = { "<cmd>lnext<CR>zz", "Goto previous error" },
+		j = { "<cmd>lprev<CR>zz", "Goto next error" },
+		s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" }
+	},
+	g = {
+		name = "Goto",
+		b = { "<cmd>:BufferLinePick<CR>", "Pick buffer" },
+		h = { "<C-w>h", "Goto split on left" },
+		l = { "<C-w>l", "Goto split on right" },
+		j = { "<C-w>j", "Goto split on bottom" },
+		k = { "<C-w>k", "Goto split on top" },
+	},
+	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+	['<C-s>'] = { "<cmd>w<CR>", "Save file" },
+	J = { "mzJ`z", "Join lines below" },
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+	['<C-d>'] = { "<C-d>zz", "Scroll down" },
+	['<C-u>'] = { "<C-u>zz", "Scroll up" },
 
--- greatest remap ever paste in place without overwriting buffer
-vim.keymap.set("x", "<leader>p", [["_dP]])
+	n = { "nzzzv", "Next search result" },
+	N = { "Nzzzv", "Previous search result" },
 
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+	["<C-k>"] = { "<cmd>cnext<CR>zz", 'Goto previous error' },
+	["<C-j>"] = { "<cmd>cprev<CR>zz", 'Goto next error' },
 
-vim.keymap.set("n", "Q", "<nop>")
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
---
+	["<C-`>"] = { "<cmd>bo split term://fish<CR>", "Open terminal" },
+	["<A-h>"] = { "<cmd>bo split term://fish<CR>", "Open terminal" },
+	["<A-v>"] = { "<cmd>bo vsplit term://fish<CR>", "Open terminal" },
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+}, { mode = "n" })
 
--- search word under cursor
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+wk.register({
+	["<leader>"] = {
+		d = { "\"_d", "Delete to null clipboard" },
+		y = { "\"+y", "Copy to system clipboard" },
+	},
+	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+	['<C-s>'] = { "<cmd>w<CR>", "Save file" },
+	J = { ":m '>+1<CR>gv=gv", "Move selection down" },
+	K = { ":m '<-2<CR>gv=gv", "Move selection up" },
+}, { mode = "v" })
 
--- keybinding to toggle fish terminal
-vim.keymap.set("n", "<C-`>", "<cmd>bo split term://fish<CR>")
+wk.register({
+	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+	['<C-s>'] = { "<cmd>w<CR>", "Save file" },
+}, { mode = "i" })
+
+wk.register({
+	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+}, { mode = "t" })
+
+wk.register({
+	['<leader>p'] = { "\"_dP", "Paste in place without overwriting register" },
+	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+}, { mode = "x" })
+
+wk.setup()

@@ -16,13 +16,6 @@ return require('packer').startup(function(use)
 	use 'mbbill/undotree'
 
 	use {
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup {}
-		end
-	}
-
-	use {
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
 	}
@@ -57,6 +50,24 @@ return require('packer').startup(function(use)
 		end,
 	}
 	use 'lewis6991/impatient.nvim'
+
+	-- focus
+	use {
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup {}
+		end
+	}
+	use {
+		"folke/twilight.nvim",
+		config = function()
+			require("twilight").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
+	}
 
 	-- formatting
 	use "jose-elias-alvarez/null-ls.nvim"

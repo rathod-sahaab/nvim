@@ -7,11 +7,13 @@ require("zen-mode").setup {
 	},
 }
 
-vim.keymap.set("n", "<leader>zz", function()
-	require("zen-mode").toggle({
-		window = {
-			width = .9
-		}
-	})
-	vim.wo.wrap = false
-end)
+require('which-key').register({
+	['<leader>zz'] = { function()
+		require("zen-mode").toggle({
+			window = {
+				width = .6
+			}
+		})
+		vim.wo.wrap = false
+	end, 'Toggle Zen mode' },
+})
