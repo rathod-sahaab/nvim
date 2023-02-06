@@ -102,6 +102,11 @@ return require('packer').startup(function(use)
 	use { "catppuccin/nvim", as = "catppuccin" }
 	use { "ellisonleao/gruvbox.nvim" }
 	use { 'rose-pine/neovim', as = 'rose-pine' }
+	use {
+		'ramojus/mellifluous.nvim',
+		requires = { 'rktjmp/lush.nvim' },
+	}
+	use "savq/melange-nvim"
 	-- appearance
 	use "lukas-reineke/indent-blankline.nvim"
 	use "p00f/nvim-ts-rainbow"

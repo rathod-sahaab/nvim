@@ -1,48 +1,35 @@
 require('impatient')
 require('rathod-sahaab')
 
-require("catppuccin").setup({
-	flavour = "mocha", -- latte, frappe, macchiato, mocha
-	background = { -- :h background
-		light = "latte",
-		dark = "mocha",
-	},
-	transparent_background = false,
-	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-	term_colors = false,
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
-	},
-	no_italic = false, -- Force no italic
-	no_bold = false, -- Force no bold
-	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-		loops = {},
-		functions = {},
-		keywords = { "bold" },
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
-	color_overrides = {},
-	custom_highlights = {},
-	integrations = {
-		cmp = true,
-		gitsigns = true,
-		nvimtree = true,
-		telescope = true,
-		notify = false,
-		mini = false,
-		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-	},
+require 'mellifluous'.setup({
+    dim_inactive = false,
+    color_set = 'mellifluous',
+    styles = {
+        comments = 'italic',
+    },
+    transparent_background = {
+        enabled = false,
+        floating_windows = false,
+        telescope = true,
+        file_tree = true,
+        cursor_line = true,
+        status_line = false,
+    },
+    plugins = {
+        cmp = true,
+        gitsigns = true,
+        indent_blankline = true,
+        nvim_tree = {
+            enabled = true,
+            show_root = false,
+        },
+        telescope = {
+            enabled = true,
+            nvchad_like = true,
+        },
+        startify = true,
+    },
 })
 
--- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme mellifluous")

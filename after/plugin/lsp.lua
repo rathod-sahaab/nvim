@@ -40,20 +40,41 @@ lsp.on_attach(function(client, bufnr)
 
 	navic.attach(client, bufnr)
 
-	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-	vim.keymap.set("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end, opts)
-	-- goto diagnostic
-	vim.keymap.set("n", "<leader>ldp", function() vim.diagnostic.goto_prev() end, opts)
-	vim.keymap.set("n", "<leader>ldn", function() vim.diagnostic.goto_next() end, opts)
-	-- code actions
-	vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
-	-- lsp diagnostic expand
-	vim.keymap.set("n", "<leader>lde", function() vim.diagnostic.open_float() end, opts)
-	vim.keymap.set("n", "<leader>lgi", function() vim.lsp.buf.implementation() end, opts)
-	vim.keymap.set("n", "<leader>lgr", function() vim.lsp.buf.references() end, opts)
-	vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
-	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+	local which_key = require("which-key")
+
+	which_key.register({
+		name = "lsp",
+		D = { function() vim.lsp.diagnostic.set_loclist() end, "Show diagnostics for current buffer" },
+		R = { function() vim.lsp.buf.references() end, "Show references" },
+		c = { function() vim.lsp.buf.code_action() end, "Run code action" },
+		d = {
+			name = "diagnostics",
+			l = { function() vim.diagnostic.show_line_diagnostics({ border = "single" }) end, "Show line diagnostics" },
+			o = { function() vim.diagnostic.open_float({ border = "single" }) end, "Open floating window" },
+			p = {function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis'},
+			n = {function() vim.diagnostic.goto_next() end, 'Goto next diagnosis'},
+		} ,
+		f = { function() vim.lsp.buf.formatting() end, "Format code" },
+		i = { function() vim.lsp.buf.incoming_calls() end, "Show incoming calls" },
+		o = { function() vim.lsp.buf.outgoing_calls() end, "Show outgoing calls" },
+		r = { function() vim.lsp.buf.rename() end, "Rename symbol under cursor" },
+		s = { function() vim.lsp.buf.document_symbol() end, "Search for symbol in document" },
+		t = { function() vim.lsp.buf.type_definition() end, "Go to type definition" },
+		w = {
+			name = "workspace",
+			D = {
+				function() vim.lsp.diagnostic.set_loclist({ workspace = true }) end,
+				"Show diagnostics for current workspace",
+			},
+			a = { function() vim.lsp.buf.add_workspace_folder() end, "Add workspace folder" },
+			l = { function() print(vim.lsp.buf.list_workspace_folders()) end, "List workspace folders" },
+			r = { function() vim.lsp.buf.remove_workspace_folder() end, "Remove workspace folder" },
+			s = { function() vim.lsp.buf.workspace_symbol() end, "Search for symbol in workspace" },
+		},
+	}, {
+		prefix = "<leader>l",
+		buffer = bufnr,
+	})
 end)
 
 lsp.setup()
