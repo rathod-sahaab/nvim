@@ -10,7 +10,20 @@ wk.register({
 		e = { "<cmd>NvimTreeFocus<CR>", "Focus file explorer" },
 		k = { "<cmd>lnext<CR>zz", "Goto previous error" },
 		j = { "<cmd>lprev<CR>zz", "Goto next error" },
-		s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" }
+		s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
+		u = {
+			name = "UI",
+			t = {
+				name = "Toggle",
+				b = { function()
+					if vim.opt.background:get() == "dark" then
+						vim.cmd("set background=light")
+					else
+						vim.cmd("set background=dark")
+					end
+				end, "Dark mode" },
+			}
+		}
 	},
 	g = {
 		name = "Goto",

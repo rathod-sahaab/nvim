@@ -6,8 +6,10 @@ wk.register({
 	name = 'Telescope',
 	f = { builtin.find_files, 'Find Files' },
 	g = { builtin.git_files, 'Git Files' },
-	s = { builtin.grep_string, 'Grep String' },
+	s = { builtin.live_grep, 'Grep String' },
 	d = { builtin.diagnostics, 'Document Diagnostics' },
+	b = { builtin.buffers, 'Buffers' },
+	o = { builtin.oldfiles, 'Old Files' },
 }, {
 	prefix = '<leader>t',
 })
@@ -45,7 +47,7 @@ telescope.setup({
 			preview_cutoff = 120,
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
-		file_ignore_patterns = { "node_modules",  "dist" },
+		file_ignore_patterns = { "node_modules", "dist" },
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		path_display = { "truncate" },
 		winblend = 0,

@@ -9,6 +9,11 @@ lsp.ensure_installed({
 	'rust_analyzer'
 })
 
+local cmp = require('cmp')
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	['<C-Space>'] = cmp.mapping.complete(),
+})
+
 lsp.setup_nvim_cmp({
 	sources = {
 		-- This one provides the data from copilot.
@@ -22,8 +27,7 @@ lsp.setup_nvim_cmp({
 	},
 })
 
-lsp.set_preferences({
-})
+lsp.set_preferences({})
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -69,6 +73,14 @@ lsp.on_attach(function(client, bufnr)
 		},
 	}, {
 		prefix = "<leader>l",
+		buffer = bufnr,
+	})
+	which_key.register({
+		["<C-h>"] = { function()
+			vim.lsp.buf.signature_help()
+		end, "Signature Help" },
+	}, {
+		mode = "i",
 		buffer = bufnr,
 	})
 end)

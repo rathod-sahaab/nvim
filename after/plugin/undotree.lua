@@ -1,2 +1,5 @@
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
+require 'which-key'.register({
+	["<leader>"] = {
+		U = { "<cmd>UndotreeToggle<CR>", "Toggle undo tree" },
+	},
+}, { mode = "n" })
