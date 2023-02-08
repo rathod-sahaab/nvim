@@ -47,9 +47,9 @@ wk.register({
 	["<C-j>"] = { "<cmd>cprev<CR>zz", 'Goto next error' },
 
 	["<C-`>"] = { "<cmd>bo split term://fish<CR>", "Open terminal" },
-	["<A-h>"] = { "<cmd>bo split term://fish<CR>", "Open terminal" },
-	["<A-v>"] = { "<cmd>bo vsplit term://fish<CR>", "Open terminal" },
-
+	["<A-h>"] = { "<cmd>bo split term://fish<CR>", "Open terminal in horizontal split" },
+	["<A-v>"] = { "<cmd>bo vsplit term://fish<CR>", "Open terminal in horizontal vertical split" },
+	["<A-t>"] = { "<cmd>tabnew term://fish<CR>", "Open terminal in new tab" },
 }, { mode = "n" })
 
 wk.register({
