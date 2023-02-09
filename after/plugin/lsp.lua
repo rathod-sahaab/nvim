@@ -39,12 +39,15 @@ local custom_on_attach = function(client, bufnr)
 
 	which_key.register({
 		name = "lsp",
-		D = { function() vim.lsp.diagnostic.set_loclist() end, "Show diagnostics for current buffer" },
-		R = { function() vim.lsp.buf.references() end, "Show references" },
+		t = {
+			name = "toggle",
+			wd = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace Diagnostics" },
+			r = { "<cmd>TroubleToggle lsp_refrences<CR>", "Refrences" },
+			d = { '<cmd>TroubleToggle document_diagnostics<CR>', "Show diagnostics" },
+		},
 		c = { function() vim.lsp.buf.code_action() end, "Run code action" },
 		d = {
 			name = "diagnostics",
-			l = { function() vim.diagnostic.show_line_diagnostics({ border = "single" }) end, "Show line diagnostics" },
 			o = { function() vim.diagnostic.open_float({ border = "single" }) end, "Open floating window" },
 			N = { function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis' },
 			n = { function() vim.diagnostic.goto_next() end, 'Goto next diagnosis' },
@@ -60,8 +63,7 @@ local custom_on_attach = function(client, bufnr)
 		i = { function() vim.lsp.buf.incoming_calls() end, "Show incoming calls" },
 		o = { function() vim.lsp.buf.outgoing_calls() end, "Show outgoing calls" },
 		r = { function() vim.lsp.buf.rename() end, "Rename symbol under cursor" },
-		s = { function() vim.lsp.buf.document_symbol() end, "Search for symbol in document" },
-		t = { function() vim.lsp.buf.type_definition() end, "Go to type definition" },
+		T = { function() vim.lsp.buf.type_definition() end, "Go to type definition" },
 		w = {
 			name = "workspace",
 			D = {
