@@ -25,11 +25,12 @@ lsp.setup_nvim_cmp({
 		{ name = 'buffer', keyword_length = 3 },
 		{ name = 'luasnip', keyword_length = 2 },
 	},
+	mappings = cmp_mappings,
 })
 
 lsp.set_preferences({})
 
-lsp.on_attach(function(client, bufnr)
+local custom_on_attach = function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	navic.attach(client, bufnr)
@@ -45,13 +46,14 @@ lsp.on_attach(function(client, bufnr)
 			name = "diagnostics",
 			l = { function() vim.diagnostic.show_line_diagnostics({ border = "single" }) end, "Show line diagnostics" },
 			o = { function() vim.diagnostic.open_float({ border = "single" }) end, "Open floating window" },
-			p = { function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis' },
+			N = { function() vim.diagnostic.goto_prev() end, 'Goto previous diagnosis' },
 			n = { function() vim.diagnostic.goto_next() end, 'Goto next diagnosis' },
 		},
 		f = { function() vim.lsp.buf.format({
 				filter = function()
 					return client.name ~= "tsserver"
 				end,
+				timeout = 30000,
 				bufnr = bufnr,
 			})
 		end, "Format code" },
@@ -77,13 +79,15 @@ lsp.on_attach(function(client, bufnr)
 	})
 	which_key.register({
 		["<C-h>"] = { function()
-			vim.lsp.buf.signature_help()
+			vim.lsp.buf.signature_help({ border = 'single' })
 		end, "Signature Help" },
 	}, {
 		mode = "i",
 		buffer = bufnr,
 	})
-end)
+end
+
+lsp.on_attach(custom_on_attach)
 
 lsp.setup()
 
@@ -91,13 +95,8 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
-vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({
-		filter = function(client) return client.name ~= "tsserver" end,
-		timeout_ms = 30000
-	})
-end)
-
 require 'lspconfig'.sumneko_lua.setup {
+	on_attach = custom_on_attach,
 	settings = {
 		Lua = {
 			runtime = {

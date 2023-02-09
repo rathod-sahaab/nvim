@@ -153,4 +153,10 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-tree/nvim-web-devicons' },
 	}
 	use 'ggandor/leap.nvim'
+	use {
+		"AckslD/nvim-neoclip.lua",
+		requires = {
+			{ 'nvim-telescope/telescope.nvim' },
+		},
+	}
 end)

@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local wk = require("which-key")
 
 wk.register({
+	['<Esc>'] = { "<cmd>noh<CR><Esc>", "Clear Highlights" },
 	["<leader>"] = {
 		d = { "\"_d", "Delete to null clipboard" },
 		y = { "\"+y", "Copy to clipboard" },
@@ -13,6 +14,10 @@ wk.register({
 		s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
 		u = {
 			name = "UI",
+			b = {
+				name = 'Buffers',
+				d = { "<cmd>bd<CR>", "Sort by directory" },
+			},
 			t = {
 				name = "Toggle",
 				b = { function()
@@ -27,7 +32,9 @@ wk.register({
 	},
 	g = {
 		name = "Goto",
-		b = { "<cmd>:BufferLinePick<CR>", "Pick buffer" },
+		t = { "<cmd>BufferLinePick<CR>", "Pick Tab" },
+		B = { "<cmd>bprev<CR>", "Previous buffer" },
+		b = { "<cmd>bnext<CR>", "Next buffer" },
 		h = { "<C-w>h", "Goto split on left" },
 		l = { "<C-w>l", "Goto split on right" },
 		j = { "<C-w>j", "Goto split on bottom" },
@@ -43,10 +50,7 @@ wk.register({
 	n = { "nzzzv", "Next search result" },
 	N = { "Nzzzv", "Previous search result" },
 
-	["<C-k>"] = { "<cmd>cnext<CR>zz", 'Goto previous error' },
-	["<C-j>"] = { "<cmd>cprev<CR>zz", 'Goto next error' },
-
-	["<C-`>"] = { "<cmd>bo split term://fish<CR>", "Open terminal" },
+	["<C-`>"] = { "<cmd>tabnew term://fish<CR>", "Open terminal" },
 	["<A-h>"] = { "<cmd>bo split term://fish<CR>", "Open terminal in horizontal split" },
 	["<A-v>"] = { "<cmd>bo vsplit term://fish<CR>", "Open terminal in horizontal vertical split" },
 	["<A-t>"] = { "<cmd>tabnew term://fish<CR>", "Open terminal in new tab" },
@@ -66,6 +70,7 @@ wk.register({
 wk.register({
 	['<C-n>'] = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
 	['<C-s>'] = { "<cmd>w<CR>", "Save file" },
+	['jk'] = { "<Esc>", "Exit insert mode" },
 }, { mode = "i" })
 
 wk.register({

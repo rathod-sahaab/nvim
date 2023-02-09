@@ -8,12 +8,12 @@ require("zen-mode").setup {
 }
 
 require('which-key').register({
-	['<leader>zz'] = { function()
+	['<leader>utz'] = { function()
 		require("zen-mode").toggle({
 			window = {
 				width = .6
 			}
 		})
 		vim.wo.wrap = false
-	end, 'Toggle Zen mode' },
+	end, 'Zen mode' },
 })

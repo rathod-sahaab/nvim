@@ -8,7 +8,7 @@ require('gitsigns').setup({
 			h = {
 				name = "Hunk",
 				n = { gs.next_hunk, "Next hunk" },
-				p = { gs.prev_hunk, "Previous hunk" },
+				N = { gs.prev_hunk, "Previous hunk" },
 				s = { gs.stage_hunk, "Stage hunk" },
 				us = { gs.undo_stage_hunk, "Undo stage hunk" },
 				r = { gs.reset_hunk, "Reset hunk" },

@@ -33,6 +33,7 @@ telescope.setup({
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
+		dynamic_preview_title = true,
 		layout_config = {
 			horizontal = {
 				prompt_position = "top",
@@ -65,5 +66,5 @@ telescope.setup({
 		},
 	},
 
-	extensions_list = { "themes", "terms" },
+	extensions_list = { "themes", "terms", },
 })
