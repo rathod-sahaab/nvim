@@ -4,7 +4,4 @@ return {
   opts = {
     update_events = { "TextChanged", "TextChangedI" },
   },
-  keys = function()
-    return {}
-  end,
 }
