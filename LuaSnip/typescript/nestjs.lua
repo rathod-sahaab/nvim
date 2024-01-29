@@ -19,7 +19,7 @@ return {
     fmt(
       [[
 @InjectModel({})
-private readonly {}Model: Model<{}>,
+private readonly {}Model: Model<{}Document>,
     ]],
       {
         i(1),
