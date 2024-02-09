@@ -1,5 +1,13 @@
 local M = {}
 
+function M.split(str, delimiter)
+  local parts = {}
+  for part in str:gmatch("[^" .. delimiter .. "]+") do
+    table.insert(parts, part)
+  end
+  return parts
+end
+
 function M.pascal_to_camel(input)
   if input == nil then
     return input
